@@ -1,29 +1,58 @@
 body {
   text-align: center;
   background-color: #011F3F;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.game-wrapper {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 #level-title {
   font-family: 'Press Start 2P', cursive;
-  font-size: 3rem;
-  margin:  5%;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin: 2% 0;
   color: #FEF2BF;
+  line-height: 1.5;
+}
+
+.subtitle {
+  font-family: 'Press Start 2P', cursive;
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
+  color: #FEF2BF;
+  margin: 0 0 2% 0;
+  opacity: 0.8;
 }
 
 .container {
   display: block;
-  width: 50%;
+  width: 100%;
+  max-width: 500px;
   margin: auto;
-
 }
 
 .btn {
-  margin: 25px;
+  margin: 15px;
   display: inline-block;
-  height: 200px;
-  width: 200px;
+  height: clamp(120px, 20vw, 200px);
+  width: clamp(120px, 20vw, 200px);
   border: 10px solid black;
   border-radius: 20%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
 }
 
 .game-over {
@@ -32,22 +61,90 @@ body {
 }
 
 .red {
-  background-color: red;
+  background-color: #ff4444;
 }
 
 .green {
-  background-color: green;
+  background-color: #00C851;
 }
 
 .blue {
-  background-color: blue;
+  background-color: #33b5e5;
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: #ffbb33;
 }
 
 .pressed {
   box-shadow: 0 0 20px white;
   background-color: grey;
+  transform: scale(0.95);
+}
+
+.sequence-active {
+  box-shadow: 0 0 30px white;
+  transform: scale(1.1);
+  border-color: white;
+  animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.controls {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.control-btn {
+  font-family: 'Press Start 2P', cursive;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  padding: 0.8rem 1.5rem;
+  background-color: #FEF2BF;
+  border: 3px solid #011F3F;
+  border-radius: 5px;
+  color: #011F3F;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+  background-color: #011F3F;
+  color: #FEF2BF;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+  
+  .btn {
+    margin: 10px;
+  }
+  
+  .controls {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  
+  .btn {
+    margin: 8px;
+  }
+  
+  .control-btn {
+    padding: 0.6rem 1.2rem;
+  }
 }
